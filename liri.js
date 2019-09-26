@@ -39,3 +39,32 @@ var spotify = new Spotify(keys.spotify)
   console.log("\n")
 });
 }
+
+// movie function
+function movieThis(movieTitle) {
+var movieURL = "http://www.omdbapi.com/"
+
+axios.get(movieURL, {
+    params: {
+        apikey: "trilogy",
+        t: movieTitle,
+    
+    }
+})
+.then(function (response) {
+console.log(response.data.title);
+console.log(response.data.year);
+console.log(response.data.imdbRating);
+response.data.Ratings.forEach(element => {
+    if (element.Source==='Rotten Tomatoes') {
+        console.log(element.Source + element.Value)
+    }
+});
+console.log(response.data.Country)
+console.log(response.data.Language)
+console.log(response.data.Plot)
+console.log(response.data.Actors)
+})
+}
+
+movieThis("The World is not enough")
