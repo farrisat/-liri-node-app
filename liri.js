@@ -93,6 +93,17 @@ function chooseFunction(command, argument) {
     }
 
     else if (command === "do-what-it-says") {
-
+        obey()
     }
+}
+
+function obey() {
+    var fs = require("fs")
+    var path = "random.txt"
+
+    fs.readFile(path, {encoding: 'utf-8'}, function(err,data){
+            if (!err) {
+            var splice = data.split(",")
+            chooseFunction(splice[0],splice[1])
+     } })
 }
