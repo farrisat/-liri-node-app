@@ -40,7 +40,7 @@ var spotify = new Spotify(keys.spotify)
 });
 }
 
-// movie function
+// movie function-needs spacing for rotten tomatoes Rating and and add IMDB and country titles. MAKE IT PRETTY.
 function movieThis(movieTitle) {
 var movieURL = "http://www.omdbapi.com/"
 
@@ -67,4 +67,32 @@ console.log(response.data.Actors)
 })
 }
 
-movieThis("The World is not enough")
+chooseFunction(process.argv[2],process.argv[3])
+// spotify this song not ace of bass....we don't care about Harry Styles
+function chooseFunction(command, argument) {
+    if (command ==="concert-this") {
+        if (argument===undefined){
+            console.log("Pick a good band");
+            process.exit();
+        }
+        concertThis(argument)
+    }
+
+    else if (command === "spotify-this-song") {
+        if (argument===undefined) {
+            argument="The Sign"
+        }
+        spotifyThis(argument)
+    }
+
+    else if (command === "movie-this") {
+        if (argument===undefined) {
+            argument = "Mr. Nobody"
+        }
+        movieThis(argument)
+    }
+
+    else if (command === "do-what-it-says") {
+
+    }
+}
